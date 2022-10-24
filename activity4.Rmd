@@ -1,0 +1,22 @@
+---
+output: html_document
+---
+<!-- activity 4 -->
+
+Signal averaging works well when the time to record a single spectrum is short and when the sample and the instrument are stable with respect to time. When either of these conditions fail, we can take advantage of the fact that noise is a rapidly changing value superimposed on a slowly changing signal and use a digital filter to smooth the noise by averaging it across several adjacent points.
+
+A4.1. Think about what it means to take an average and then explain why averaging five consecutive points from a noisy spectrum will reduce the noise more than the signal.
+
+#### Moving Average Filter
+
+In a moving average filter we add together an odd number of consecutive points from a spectrum (the filter's length), average their values, and replace the middle point's value with this average. Use the controls on the right to explore how the length of a moving average filer affects the signal-to-noise ratio using several spectra of blue dye.
+
+A4.2. As you increase the width of the moving average filter you should notice that the smoothed spectrum has lost points at both smaller and large wavelengths. Explain why this distortion of the original spectrum is expected.
+
+#### Savitzky-Golay Filter
+
+A moving average filter weights all points equally. With a Savitzky-Golay filter, the points near the middle of the filter are given more weight than the points at the edges. 
+
+A4.3. Use the controls on the right to explore how the length of a Savitzky-Golay filter affects the signal-to-noise ratio using several spectra of blue dye.
+
+A4.4. Compare equally-sized moving average filters and Savitzky-Golay filters to each other. What advantages are apparent with a moving average filter? What advantages are apparent with a Savitsky-Golay filter?

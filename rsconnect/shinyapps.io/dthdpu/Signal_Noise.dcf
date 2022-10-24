@@ -1,0 +1,14 @@
+name: Signal_Noise
+title: Signal_Noise
+username:
+account: dthdpu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7148111
+bundleId: 6428294
+url: https://dthdpu.shinyapps.io/Signal_Noise/
+when: 1666383129.72855
+lastSyncTime: 1666383129.72856
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: activity1.Rmd|activity2.Rmd|activity3.Rmd|activity4.Rmd|introduction.Rmd|Screen Shot 2022-10-21 at 07.43.54 AM.png|Screen Shot 2022-10-21 at 07.44.27 AM.png|Screen Shot 2022-10-21 at 07.45.36 AM.png|Screen Shot 2022-10-21 at 07.45.54 AM.png|Screen Shot 2022-10-21 at 07.46.02 AM.png|Screen Shot 2022-10-21 at 07.49.31 AM.png|Screen Shot 2022-10-21 at 07.50.11 AM.png|Screen Shot 2022-10-21 at 07.51.59 AM.png|wrapup.Rmd
