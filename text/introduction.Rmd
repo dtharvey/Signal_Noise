@@ -1,0 +1,37 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+<!-- the font size is scaled to 90% to match text -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 90 }, 
+        SVG: { linebreaks: { automatic:true } }, 
+ });
+</script>
+```
+
+<!-- text for introduction -->
+
+The figure to the right shows replicate visible spectra for a very dilute solution of a blue dye. All spectra have the same *x*-axis and *y*-axis scales, which are included with the spectra in the lower right and the upper left corners, respectively. Eight individual spectra are arranged on the outside (in light blue); the central figure (in dark blue) overlays 64 individual spectra. Each spectrum in this data set has two parts: a determinate, or systematic contribution from the blue dye and an indeterminate, or random contribution from uncertainty in the measurement process. The first is the signal and the second is the noise.
+
+#### Examining the Signal
+
+The eight individual spectra are nearly identical. Each has a prominent absorbance peak at about 630 nm with a maximum absorbance of roughly 0.025 absorbance units (au). The main absorbance peak is nearly symmetrical in shape, with a possible shoulder at shorter wavelengths. Each spectrum has a width at half-height of approximately 45 nm. The similarity in these features means a spectrum contains useful information about the blue dye in the form of its peak position, peak shape, and absorbance. Any additional spectra should share these features. This is what it means to say that a spectrum includes a systematic signal.
+
+#### Examining the Noise
+
+The eight individual spectra also share a background absorbance on either side of the peak, characterized by absorbance values less than 0.005 au that fluctuate by approximately $\pm 0.0025 \text{ au}$. These fluctuations are random and do not have an underlying systematic pattern that carries information about the blue dye; the fluctuations, however, carry information about the method---the instrument---by which the spectra were recorded. Any additional spectra of the blue dye should share these features. This is what it means to say that a spectrum contains noise.  
+
+#### Examining the Signal and the Noise
+
+The spectrum in the middle of the figure---an overlay of 64 individual spectra---gives another insight to the difference between the signal and the noise. The peak from the blue dye in the overlaid spectrum retains the shape, position and absorbance of the individual spectra; the noise, however, is both greater in magnitude and smoother in appearance.

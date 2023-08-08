@@ -1,0 +1,45 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+<!-- the font size is scaled to 90% to match text -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 90 }, 
+        SVG: { linebreaks: { automatic:true } }, 
+ });
+</script>
+```
+
+<!-- text for wrapping up -->
+
+#### Details on the Data Set in this Module
+
+The spectra in all activities, except for Activity 2, use a commercial food coloring that contains the FD&C dyes Blue 1 and Red 40. To allow for small signal-to-noise ratios, a portion of the stock solution was diluted until the absorbance was between 0.02 and 0.03 au. Spectra were recorded using a Vernier SpectroVis Plus spectrophotometer and LoggerPro software. A full spectrum was recorded for each of 70+ consecutive scans, stored, and exported as a single .csv file. This file was trimmed to the first 64 spectra for use in this module. You can use the download button to retrieve the spectra as a csv file; the individual spectra are organized in columns of absorbance values at wavelengths given in the first column.
+
+#### Why Did We Use Synthetic Data in Activity 2?
+
+One limitation to working with real spectra is that we cannot separate the signal from the noise so that we can examine them separately, Synthetic data allows us to do this by separately creating the signal and the noise, and then adding them together to create a noisy signal. The figure on the upper right shows the original spectrum from Activity 2 as the pure signal (bottom), the pure noise (middle), and the resulting noisy signal (top).
+
+#### Can We Use a Smoothing Filter Several Times on the Same Data?
+
+In a word: yes. The figure on the lower right shows, in blue, one spectrum of the blue dye and the results, in magenta, of applying a 15-point moving average filter 1, 2, 3, 4, and 5 times. As with any filter, care is needed to avoid distortions due to over-smoothing.
+
+#### Additional Resources
+
+You can learn more about signals, noise, signal-to-noise ratios, and signal averaging in [Chapter 10.3 of *Analytical Chemistry 2.1*](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_(Harvey)/10%3A_Spectroscopic_Methods/10.03%3A_UV_Vis_and_IR_Spectroscopy). You can learn more about both signal averaging and smoothing filters, including examples of R code for cleaning up data, in [Chapter 10 of *Chemometrics with R*](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Chemometrics_Using_R_(Harvey)/10%3A_Cleaning_Up_Data). Both of these resources are part of the [LibreText](https://libretexts.org/) project.
+
+The original paper on Savitzky-Golay smoothing is [Abraham Savitzky and M.J.E. Golay, "Smoothing and Differentiation of Data by Simplified Least Squares Procedures," *Analytical Chemistry*, *36*, 1627--1639](https://doi.org/10.1021/ac60214a047). 
+
+A more detailed look at Savitzky-Golay filters is available in another AC 3.0 module. The use of Fourier filters to smooth data is available in another AC 3.0 module
+
+You can explore signal averaging and smoothing filters using the javascript applet available [here](http://195.134.76.37/applets/AppletSmooth/Appl_Smooth2.html).

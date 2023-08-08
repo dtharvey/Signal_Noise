@@ -1,0 +1,39 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+<!-- the font size is scaled to 90% to match text -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 90 }, 
+        SVG: { linebreaks: { automatic:true } }, 
+ });
+</script>
+```
+
+<!-- text for activity 2 -->
+
+The signal-to-noise ratio affects our ability to answer two questions at the heart of many analytical measurements: Is the analyte present, and, if yes, at what concentration? The figure to the right shows the result of an analytical measurement that yields a peak. The specific source of the data is not important; indeed, this is purely synthetic data. The signal, noise, and signal-to-noise ratio are reported above the peak; this is the default spectrum. The two sliders allow you to increase or to decrease the contribution of the signal and the noise, and thus, to vary the signal-to-noise ratio. A multiplier of 1.5 for the signal increases the signal by a factor of $1.5 \times$, and a multiplier of 0.5 for the noise decreases the noise by a factor of $0.5 \times$.
+
+#### Qualitative Judgements Using the Signal-to-Noise Ratio
+
+A qualitative judgement is a binary decision: are you confident---yes or no---that the analyte is present?
+
+**Exercise 1**. Use the two sliders to identify a threshold signal-to-noise ratio above which you are confident that a peak is present. Is your threshold the same if you approach it by beginning with a larger or a smaller signal-to-noise ratio?
+
+#### Quantitative Judgements Using the Signal-to-Noise Ratio
+
+For a quantitative judgement you want to minimize any uncertainty in your measurement of the signal.
+
+**Exercise 2**. Use the two sliders to identify a threshold signal-to-noise ratio above which you are confident that the noise is not significantly affecting your measurement of the signal. Is your threshold the same if you approach it by beginning with a larger or a smaller signal-to-noise ratio?
+
+**Exercise 3**. How does your qualitative threshold compare to your quantitative threshold? Are they relatively similar to each other, or are they quite different? Are you comfortable with this difference?

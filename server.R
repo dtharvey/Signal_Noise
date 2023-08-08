@@ -19,7 +19,7 @@ sg25 = c(-253,-138,-33,62,147,222,287,322,387,422,447,462,467,462,447,422,387,32
 sgfilters = list(NA,NA,NA,NA,sg5,NA,sg7,NA,sg9,NA,sg11,NA,sg13,NA,sg15,NA,sg17,NA,sg19,NA,sg21,NA,sg23,NA,sg25)
 
 # load in the any files needed by server
-spectra = read.csv(file = "blue_singlescans.csv")
+spectra = read.csv(file = "data/blue_singlescans.csv")
 set.seed(13)
 
 shinyServer(function(input, output) {
@@ -27,32 +27,32 @@ shinyServer(function(input, output) {
   output$introplot1 = renderPlot({
     old.par = par(mfrow = c(3,3))
     plot(x = spectra$wavelength, y = spectra$abs60, 
-         type = "l", lwd = 2, col = 6, xlab = "", 
+         type = "l", lwd = 2, col = 3, xlab = "", 
          ylab = "absorbance (au)", bty = "n",
          ylim = c(0, 0.03), xaxt = "n")
     plot(x = spectra$wavelength, y = spectra$abs47, 
-         type = "l", lwd = 2, col = 6, xlab = "", ylab = "", bty = "n",
+         type = "l", lwd = 2, col = 3, xlab = "", ylab = "", bty = "n",
          ylim = c(0, 0.03), xaxt = "n", yaxt = "n")
     plot(x = spectra$wavelength, y = spectra$abs62, 
-         type = "l", lwd = 2, col = 6, xlab = "", ylab = "", bty = "n",
+         type = "l", lwd = 2, col = 3, xlab = "", ylab = "", bty = "n",
          ylim = c(0, 0.03), xaxt = "n", yaxt = "n")
     plot(x = spectra$wavelength, y = spectra$abs56, 
-         type = "l", lwd = 2, col = 6, xlab = "", ylab = "", bty = "n",
+         type = "l", lwd = 2, col = 3, xlab = "", ylab = "", bty = "n",
          ylim = c(0, 0.03), xaxt = "n", yaxt = "n")
     matplot(x = spectra$wavelength, y = spectra[,2:65],
-         type = "l", lwd = 1, col = 8, xlab = "", ylab = "", bty = "n",
+         type = "l", lwd = 1, col = 6, xlab = "", ylab = "", bty = "n",
          ylim = c(0, 0.03), xaxt = "n", yaxt = "n")
     plot(x = spectra$wavelength, y = spectra$abs1, 
-         type = "l", lwd = 2, col = 6, xlab = "", ylab = "", bty = "n",
+         type = "l", lwd = 2, col = 3, xlab = "", ylab = "", bty = "n",
          ylim = c(0, 0.03), xaxt = "n", yaxt = "n")
     plot(x = spectra$wavelength, y = spectra$abs49, 
-         type = "l", lwd = 2, col = 6, xlab = "", ylab = "", bty = "n",
+         type = "l", lwd = 2, col = 3, xlab = "", ylab = "", bty = "n",
          ylim = c(0, 0.03), xaxt = "n", yaxt = "n")
     plot(x = spectra$wavelength, y = spectra$abs18, 
-         type = "l", lwd = 2, col = 6, xlab = "", ylab = "", bty = "n",
+         type = "l", lwd = 2, col = 3, xlab = "", ylab = "", bty = "n",
          ylim = c(0, 0.03), xaxt = "n", yaxt = "n")
     plot(x = spectra$wavelength, y = spectra$abs25, 
-         type = "l", lwd = 2, col = 6, xlab = "wavelength (nm)", 
+         type = "l", lwd = 2, col = 3, xlab = "wavelength (nm)", 
          ylab = "", bty = "n",
          ylim = c(0, 0.03), yaxt = "n")
     par(old.par)
@@ -62,7 +62,7 @@ shinyServer(function(input, output) {
     
     id = input$spectrum + 1
     signal = round(spectra[221,id],4)
-    noise = round(sd(spectra[315:417,id]),5)
+    noise = round(sd(spectra[347:410,id]),5)
     SN = round(signal/noise,1)
     plot(x = spectra$wavelength, y = spectra[,(id)], type = "l",
             col = 6, lwd = 2, ylim = c(-0.0025,0.0275), bty = "n",
@@ -73,14 +73,14 @@ shinyServer(function(input, output) {
            legend = c(paste0("signal: ", signal),
                       paste0("noise: ",noise),
                       paste0("S/N: ",SN)))
-    legend("topleft", legend = paste0("Spectrum: ",input$spectrum), 
+    legend("topleft", legend = paste0("spectrum number : ",input$spectrum), 
            bty = "n", cex = 1.5)
     grid()
     abline(v = 630, col = 8, lwd = 2)
-    rect(700,-0.0025,775,0.006, lwd = 2, border = 8)
+    rect(725,-0.0025,775,0.006, lwd = 2, border = 8)
     text(x = 632, y = 0.028, pos = 4, label = "signal", 
          col = 8, cex = 1.5)
-    text(x = 737.5, y = 0.007, label = "noise", col = 8, cex = 1.5)
+    text(x = 750, y = 0.007, label = "noise", col = 8, cex = 1.5)
   })
   
   output$activity2plot = renderPlot({
@@ -97,9 +97,7 @@ shinyServer(function(input, output) {
          ylim = c(-1,2.5), bty = "n", xaxt = "n", xlab = "", 
          ylab = "detector response", cex.main = 1.5,
          main = paste0("signal: ", sig_max, "; noise = ", sd_noise, "; signal-to-noise ratio: ",sn))
-    # if (input$showsig == TRUE) {
-    # lines(x = x, y = signal, lwd = 3, col = "gray")
-    # }
+
     grid()
     
   })
@@ -115,7 +113,7 @@ shinyServer(function(input, output) {
          bty = "n", xlab = "", ylab = "absorbance (au)", 
          xaxt = "n")
     signal = round(sigavg[221],4)
-    noise = round(sd(sigavg[315:417]),5)
+    noise = round(sd(sigavg[347:410]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
@@ -126,7 +124,7 @@ shinyServer(function(input, output) {
          col = 6, ylim = c(0,0.03), xlim = c(400,900),
          bty = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n")
     signal = round(sigavg[221],4)
-    noise = round(sd(sigavg[315:417]),5)
+    noise = round(sd(sigavg[347:410]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
@@ -137,7 +135,7 @@ shinyServer(function(input, output) {
          col = 6, ylim = c(0,0.03), xlim = c(400,900),
          bty = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n")
     signal = round(sigavg[221],4)
-    noise = round(sd(sigavg[315:417]),5)
+    noise = round(sd(sigavg[347:410]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
@@ -148,17 +146,17 @@ shinyServer(function(input, output) {
          col = 6, ylim = c(0,0.03), xlim = c(400,900),
          bty = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n")
     signal = round(sigavg[221],4)
-    noise = round(sd(sigavg[315:417]),5)
+    noise = round(sd(sigavg[347:410]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
     
     specs = 31
     plot(x = spectra$wavelength, y = spectra[,specs], type = "l", lwd = 2, 
-         col = 8, ylim = c(0,0.03), xlim = c(400,900),
+         col = 3, ylim = c(0,0.03), xlim = c(400,900),
          bty = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n")
     signal = round(spectra[221,specs],4)
-    noise = round(sd(spectra[315:417,specs]),5)
+    noise = round(sd(spectra[347:410,specs]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
@@ -169,7 +167,7 @@ shinyServer(function(input, output) {
          col = 6, ylim = c(0,0.03), xlim = c(400,900),
          bty = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n")
     signal = round(sigavg[221],4)
-    noise = round(sd(sigavg[315:417]),5)
+    noise = round(sd(sigavg[347:410]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
@@ -180,7 +178,7 @@ shinyServer(function(input, output) {
          col = 6, ylim = c(0,0.03), xlim = c(400,900),
          bty = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n")
     signal = round(sigavg[221],4)
-    noise = round(sd(sigavg[315:417]),5)
+    noise = round(sd(sigavg[347:410]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
@@ -191,7 +189,7 @@ shinyServer(function(input, output) {
          col = 6, ylim = c(0,0.03), xlim = c(400,900),
          bty = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n")
     signal = round(sigavg[221],4)
-    noise = round(sd(sigavg[315:417]),5)
+    noise = round(sd(sigavg[347:410]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
@@ -202,7 +200,7 @@ shinyServer(function(input, output) {
          col = 6, ylim = c(0,0.03), xlim = c(400,900),
          bty = "n", xlab = "wavelength (nm)", ylab = "", yaxt = "n")
     signal = round(sigavg[221],4)
-    noise = round(sd(sigavg[315:417]),5)
+    noise = round(sd(sigavg[347:410]),5)
     SN = round(signal/noise,1)
     legend("topright", bty = "n", cex = 1.5,
            legend = c(paste0("S/N: ",SN)))
@@ -221,33 +219,33 @@ shinyServer(function(input, output) {
       mafilter = rep(1/filterlength, filterlength)
       mafiltered = filter(x = spectra[,specs], mafilter)
       signal = round(spectra[221,specs], 4)
-      noise = round(sd(spectra[315:417,specs]),5)
+      noise = round(sd(spectra[347:410,specs]),5)
       SN = round(signal/noise, 1)
       signalfiltered = round(mafiltered[221], 4)
-      noisefiltered = round(sd(mafiltered[315:417]),5)
+      noisefiltered = round(sd(mafiltered[347:410]),5)
       SNfiltered = round(signalfiltered/noisefiltered, 1)
       legend(x = "topright", bty = "n", cex = 1.5,
              legend = c(paste0("original S/N: ", SN),
                         paste0("filtered S/N: ", SNfiltered)),
              text.col = c(8, 6))
       lines(x = spectra$wavelength, y = mafiltered, lwd = 2, col = 6)
-      legend(x = "topleft", legend = paste0("Spectrum: ",input$filterspec),
+      legend(x = "topleft", legend = paste0("spectrum number: ",input$filterspec),
              bty = "n", cex = 1.5)
       grid()
     } else {
       sgfiltered = filter(x = spectra[,specs], sgfilters[[input$filtersize]])
       lines(x = spectra$wavelength, y = sgfiltered, lwd = 2, col = 6)
       signal = round(spectra[221,specs], 4)
-      noise = round(sd(spectra[315:417,specs]),5)
+      noise = round(sd(spectra[347:410,specs]),5)
       SN = round(signal/noise, 1)
       signalfiltered = round(sgfiltered[221], 4)
-      noisefiltered = round(sd(sgfiltered[315:417]),5)
+      noisefiltered = round(sd(sgfiltered[347:410]),5)
       SNfiltered = round(signalfiltered/noisefiltered, 1)
       legend(x = "topright", bty = "n", cex = 1.5,
              legend = c(paste0("original S/N: ", SN),
                         paste0("filtered S/N: ", SNfiltered)),
              text.col = c(8, 6))
-      legend(x = "topleft", legend = paste0("Spectrum: ",input$filterspec),
+      legend(x = "topleft", legend = paste0("spectrum number: ",input$filterspec),
              bty = "n", cex = 1.5)
       grid()
 
@@ -256,12 +254,12 @@ shinyServer(function(input, output) {
   })
   
   output$wrapupplot1 = renderPlot({
+    old.par = par(mar = c(1,4,1,2))
     set.seed(1111)
     x = seq(1,256,0.2)
     signal = 25 * dnorm(x, mean = 125, sd = 10)
     noise = rnorm(1276, mean = 0, sd = 0.1)
     noisy_signal = signal + noise
-    # old.par = par(mfrow = c(3,1))
     plot(x = x, y = signal, type = "l", lwd = 2, col = 6,
          ylab = "", ylim = c(-0.2,4),
          bty = "n", xaxt = "n", xlab = "", yaxt = "n",)
@@ -274,15 +272,22 @@ shinyServer(function(input, output) {
     text(x = 10, y = 0.2, pos = 4, label = "signal")
     text(x = 10, y = 1.1, pos = 4, label = "noise")
     text(x = 10, y = 3.0, pos = 4, label = "signal + noise")
-    # par(old.par)
+    par(old.par)
   })
+  
+  output$spectra = downloadHandler(
+    filename = "spectra.csv",
+    content = function(file){
+      write.csv(spectra,file)}
+  )
     
   output$wrapupplot2 = renderPlot({  
     set.seed(1111)
+    old.par = par(mar = c(5,4,1,2))
     noisy_signal = spectra[,2]
     plot(x = spectra$wavelength, y = noisy_signal, 
          type = "l", lwd = 1, col = 6, ylab = "absorbance (au)",
-         xlab = "wavelength (nm)", bty = "n", xlim = c(400,900))
+         xlab = "wavelength (nm)", bty = "n", xlim = c(550,700))
     ma = rep(1/15,15)
     for (i in 1:5){
       noisy_signal = filter(noisy_signal, ma)
@@ -293,7 +298,8 @@ shinyServer(function(input, output) {
     legend(x = "topright", 
            legend = c("one pass", "two passes", "three passes", 
                       "four passes", "five passes"), 
-           lty = 1:5, col = 8, bty = "n")
+           lty = 1:5, col = 8, lwd = 2, bty = "n")
+    par(old.par)
   })
   
 }) # close server
