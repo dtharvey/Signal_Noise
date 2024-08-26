@@ -20,7 +20,7 @@ output: html_fragment
 <!-- </script> -->
 <!-- ``` -->
 
-<!-- text for activity 4 -->
+<!-- text for activity 5 -->
 
 The Fourier transform (FT) is a mathematical operation that takes a signal in one measurement domain and converts it into a complimentary signal in another measurement domain. Although the mathematics behind a Fourier transform are complex, it is easy to appreciate why such a transformation is possible. Consider a sine wave with an amplitude of $A$ and a frequency of $f$. A plot of amplitude vs time shows an oscillating sine wave in the time domain. A plot of amplitude vs frequency, however, shows the sine wave in the frequency domain as a single line with an amplitude of $A$ at a frequency of $f$. Both domains are defined by the sine wave's amplitude and frequency.
 
