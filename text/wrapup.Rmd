@@ -1,30 +1,34 @@
 ---
-output: html_document
+output: html_fragment
 ---
 
 <!-- The following script makes it possible to use the mhchem -->
 <!-- latex package in a .Rmd file and to knit it into an .html file -->
 <!-- the font size is scaled to 90% to match text -->
 
-```{=html}
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-    extensions: ["[Contrib]/mhchem/mhchem.js"]
-}
-});
-MathJax.Hub.Config({ 
-        "HTML-CSS": { scale: 90 }, 
-        SVG: { linebreaks: { automatic:true } }, 
- });
-</script>
-```
+<!-- ```{=html} -->
+<!-- <script type="text/x-mathjax-config"> -->
+<!-- MathJax.Hub.Config({ -->
+<!--   TeX: { -->
+<!--     extensions: ["[Contrib]/mhchem/mhchem.js"] -->
+<!-- } -->
+<!-- }); -->
+<!-- MathJax.Hub.Config({  -->
+<!--         "HTML-CSS": { scale: 90 },  -->
+<!--         SVG: { linebreaks: { automatic:true } },  -->
+<!--  }); -->
+<!-- </script> -->
+<!-- ``` -->
 
 <!-- text for wrapping up -->
 
-#### Details on the Data Set in this Module
+#### Details on the Data Set Used in this Module
 
-The spectra in all activities, except for Activity 2, use a commercial food coloring that contains the FD&C dyes Blue 1 and Red 40. To allow for small signal-to-noise ratios, a portion of the stock solution was diluted until the absorbance was between 0.02 and 0.03 au. Spectra were recorded using a Vernier SpectroVis Plus spectrophotometer and LoggerPro software. A full spectrum was recorded for each of 70+ consecutive scans, stored, and exported as a single .csv file. This file was trimmed to the first 64 spectra for use in this module. You can use the download button to retrieve the spectra as a csv file; the individual spectra are organized in columns of absorbance values at wavelengths given in the first column.
+The spectra in all activities, except for Activity 2, use a commercial blue food coloring that contains the FD&C dyes Blue 1 and Red 40. To allow for small signal-to-noise ratios, a portion of the stock solution was diluted until the absorbance was between 0.02 and 0.03 au. Spectra were recorded using a Vernier SpectroVis Plus spectrometer and LoggerPro software. A full spectrum was recorded from 450 nm to 899.8 nm for each of 70+ consecutive scans, which were stored and exported as a single .csv file. This file was then trimmed to the first 64 spectra for use in this module. You can use the download button to retrieve the spectra as a .csv file; the individual spectra are organized in columns of absorbance values at 560 wavelengths, whose values are in the first column.
+
+#### Preparing the Data for Fourier Filtering
+
+For reasons we will not consider here, the number of points in the frequency domain and the time domain for Fourier filtering must be a power of 2. As $2^{9} = 512$ and $2^{10} = 1024$, the spectra for this activity use only the first 512 wavelengths, spanning a wavelength range of 450 nm to 857.6 nm.
 
 #### Why Did We Use Synthetic Data in Activity 2?
 
@@ -36,10 +40,20 @@ In a word: yes. The figure on the lower right shows, in blue, one spectrum of th
 
 #### Additional Resources
 
-You can learn more about signals, noise, signal-to-noise ratios, and signal averaging in [Chapter 10.3 of *Analytical Chemistry 2.1*](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_(Harvey)/10%3A_Spectroscopic_Methods/10.03%3A_UV_Vis_and_IR_Spectroscopy). You can learn more about both signal averaging and smoothing filters, including examples of R code for cleaning up data, in [Chapter 10 of *Chemometrics with R*](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Chemometrics_Using_R_(Harvey)/10%3A_Cleaning_Up_Data). Both of these resources are part of the [LibreText](https://libretexts.org/) project.
+You can learn more about signals, noise, signal-to-noise ratios, and signal averaging in [Chapter 10.3 of *Analytical Chemistry 2.1*](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_(Harvey)/10%3A_Spectroscopic_Methods/10.03%3A_UV_Vis_and_IR_Spectroscopy). You can learn more about signal averaging, smoothing filters, and Fourier filtering---including examples of R code for cleaning up data---in [Chapter 10 of *Chemometrics with R*](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Chemometrics_Using_R_(Harvey)/10%3A_Cleaning_Up_Data). Both of these resources are part of the [LibreText](https://libretexts.org/) project.
 
-The original paper on Savitzky-Golay smoothing is [Abraham Savitzky and M.J.E. Golay, "Smoothing and Differentiation of Data by Simplified Least Squares Procedures," *Analytical Chemistry*, *36*, 1627--1639](https://doi.org/10.1021/ac60214a047). 
+The original paper on Savitzky-Golay smoothing is [Abraham Savitzky and M.J.E. Golay, "Smoothing and Differentiation of Data by Simplified Least Squares Procedures," *Analytical Chemistry*, *36*, 1627--1639](https://doi.org/10.1021/ac60214a047).
 
-A more detailed look at Savitzky-Golay filters is available in another AC 3.0 module. The use of Fourier filters to smooth data is available in another AC 3.0 module
+The following series of papers provide a good introduction to the Fourier transform:
 
-You can explore signal averaging and smoothing filters using the javascript applet available [here](http://195.134.76.37/applets/AppletSmooth/Appl_Smooth2.html).
+* Glasser, L. [“Fourier Transforms for Chemists: Part I. Introduction to the Fourier Transform](https://doi.org/10.1021/ed064pA228),” J. Chem. Educ. 1987, 64, A228–A233
+* Glasser, L. [“Fourier Transforms for Chemists: Part II. Fourier Transforms in Chemistry and Spectroscopy](https://doi.org/10.1021/ed064pA260),” J. Chem. Educ. 1987, 64, A260–A266
+* Glasser, L. [“Fourier Transforms for Chemists: Part III. Fourier Transforms in Data Treatment](https://doi.org/10.1021/ed064pA306),” J. Chem. Educ. 1987, 64, A306–A313.
+
+The following three texts provide additional insight into the Fourier transform and some of the mathematical details; the first of the three texts is the most basic and the last of the three texts is more advanced:
+
+* Kenneth R. Beebe, Randy J. Pell, Mary Beth Seaholtz [*Chemometrics: A Practical Guide*, Wiley-Interscience, NY, 1998](https://www.wiley.com/en-us/Chemometrics%3A+A+Practical+Guide-p-9780471124511).
+* Richard G. Brereton [*Chemometrics: Data Analysis for the Laboratory and Chemical Plant*, Wiley, Chichester, UK 2003.](https://onlinelibrary.wiley.com/doi/book/10.1002/0470863242)
+* B.G.M. Vandegubste, D. L. Massart, L.M.C. Buydens, S. De Jong, P.J. Lewi, J. Smeyers-Verbeke Chapter 40 in [*Handbook of Chemometrics and Qualimetrics: Part B,, Elsevier, Amsterdam, 1998.](https://shop.elsevier.com/books/handbook-of-chemometrics-and-qualimetrics/massart/978-0-444-82853-8)
+
+You can further explore signal averaging, smoothing filters, and Fourier filtering using the javascript applet available [here](http://195.134.76.37/applets/AppletSmooth/Appl_Smooth2.html), [here](http://195.134.76.37/applets/AppletFourier/Appl_Fourier2.html), and [here](http://195.134.76.37/applets/AppletFourAnal/Appl_FourAnal2.html)

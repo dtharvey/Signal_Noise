@@ -13,6 +13,7 @@ ui = navbarPage("AC 3.0: Signals and Noise",
                 # user interface for introduction tab
                 tabPanel("Introduction",
                   fluidRow(
+                   withMathJax(),
                    column(width = 6,
                     wellPanel(
                       includeHTML("text/introduction.html")
@@ -34,10 +35,19 @@ ui = navbarPage("AC 3.0: Signals and Noise",
                      )    
                          ),
                    column(width = 6, align = "center",
-                        sliderInput("spectrum", "spectrum number", 
+                        splitLayout(cellWidths = c("150px", "150px", "250px"), 
+                                    cellArgs = list(style = "padding: 12px"),
+                        sliderInput("spectrum", "spectrum", 
                                      min = 1, max = 64, step = 1, 
                                      value = 1, width = "250px",
                                      ticks = FALSE),
+                        sliderInput("lambda_signal", "signal",
+                                    min = 450, max = 900, step = 1,
+                                    value = 600, ticks = FALSE),
+                        sliderInput("lambda_noise", "noise",
+                                    min = 450, max = 900, step = 1, 
+                                    value = c(725,775), ticks = FALSE)
+                        ),
                       plotOutput("activity1plot", height = "600px")
                           )
                   )       
@@ -84,7 +94,7 @@ ui = navbarPage("AC 3.0: Signals and Noise",
                   )
                   )       
                   ),
-                tabPanel("Digital Smoothing",
+                tabPanel("Smoothing Filters",
                   fluidRow(
                     column(width = 6,
                       wellPanel(
@@ -109,6 +119,32 @@ ui = navbarPage("AC 3.0: Signals and Noise",
                   )
                   )       
                   ),
+                
+                tabPanel("Fourier Filtering",
+                  fluidRow(
+                    column(width = 6, 
+                    wellPanel(
+                      includeHTML("text/activity5.html")
+                    )
+                    ),
+                     column(width = 6,
+                            align = "center",
+                            splitLayout(
+                              sliderInput("fftspec","spectrum number", 
+                                          min = 1, max = 64, step = 1, 
+                                          value = 1, width = "200px", 
+                                          ticks = FALSE),
+                              sliderInput("keep", "points to retain",
+                                        min = 2, max = 512, step = 2,
+                                        value = 512, ticks = FALSE)
+                            ),
+                            plotOutput("activity5plot", height = "650px")
+                            
+                            )
+                     )
+                         ),
+                
+                
                 tabPanel("Wrapping Up",
                     column(width = 6,
                       wellPanel(id = "wrapuppanel",

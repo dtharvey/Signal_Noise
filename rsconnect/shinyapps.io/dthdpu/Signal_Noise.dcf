@@ -5,9 +5,8 @@ account: dthdpu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7148111
-bundleId: 7545133
+bundleId: 9027478
 url: https://dthdpu.shinyapps.io/Signal_Noise/
-when: 1691519347.19714
-lastSyncTime: 1691519347.19715
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: R/fft_sandbox.R

@@ -1,37 +1,37 @@
 ---
-output: html_document
+output: html_fragment
 ---
 
 <!-- The following script makes it possible to use the mhchem -->
 <!-- latex package in a .Rmd file and to knit it into an .html file -->
 <!-- the font size is scaled to 90% to match text -->
 
-```{=html}
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-    extensions: ["[Contrib]/mhchem/mhchem.js"]
-}
-});
-MathJax.Hub.Config({ 
-        "HTML-CSS": { scale: 90 }, 
-        SVG: { linebreaks: { automatic:true } }, 
- });
-</script>
-```
+<!-- ```{=html} -->
+<!-- <script type="text/x-mathjax-config"> -->
+<!-- MathJax.Hub.Config({ -->
+<!--   TeX: { -->
+<!--     extensions: ["[Contrib]/mhchem/mhchem.js"] -->
+<!-- } -->
+<!-- }); -->
+<!-- MathJax.Hub.Config({  -->
+<!--         "HTML-CSS": { scale: 90 },  -->
+<!--         SVG: { linebreaks: { automatic:true } },  -->
+<!--  }); -->
+<!-- </script> -->
+<!-- ``` -->
 
 <!-- text for activity 3 -->
 
-When the signal-to-noise ratio is insufficient for your purpose, there are two broad strategies you can use to improve its value: hardware solutions and software solutions. Hardware solutions are built into the instrument and are not of interest here. With a software, or computational, solution, we mathematically process the data as it is collected or after data collection is complete. 
+When the signal-to-noise ratio is insufficient for our purpose, there are two broad strategies we can use to improve its value: hardware solutions and software solutions. Hardware solutions are built into the instrument and are not of interest here. With a software, or computational solution, we process the data using a mathematical algorithm as it is collected or after data collection is complete. 
 
 #### Signal Averaging
 
-The simplest computational approach is to average a set of $n$ individual spectra Because the analyte's signal is the same for each spectrum, its value increases linearly with $n$; noise, however, is random and increases as the square root of $n$; thus
-$$\left( S_\text{analyte} \right)_n = n \times S_\text{analyte} \text{ and } \left( s_\text{noise} \right)_n = \sqrt{n} \times s_\text{noise}$$
-**Exercise 1**. Given these two equations, derive an equation that expresses the signal-to-noise ratio after $n$ scans, $\left( S/N \right)_n$, as a function of the signal-to-noise ratio after one scan, $\left( S/N \right)_1$, and the number of scans, $n$. What will a plot of $\left( S/N \right)_n$ as a function of $n$ look like?
+The simplest computational approach is to average a set of $n$ individual spectra Because the analyte's signal is nominally the same for each spectrum, the signal increases linearly with $n$; noise, however, is random and increases as the square root of $n$; thus
+$$\left( S_\text{analyte} \right)_n = n \times S_\text{analyte} \quad \quad \quad \left( s_\text{noise} \right)_n = \sqrt{n} \times s_\text{noise}$$
+**Exercise 1**. Given these two equations, derive an equation that expresses the signal-to-noise ratio after $n$ scans, $(S/N)_n$, as a function of the signal-to-noise ratio for one scan, $(S/N)_1$, and the number of scans, $n$. What does a plot of $(S/N)_n$ as a function of $n$ look like?
 
 **Exercise 2**. Suppose a single scan has a signal-to-noise ratio of 1.0. What is the signal-to-noise ratio if $n = 4$? How many spectra do you need to average together to achieve a signal-to-noise ratio of 4.0? 
 
-**Exercise 3**. The figure on the right shows, in the center and in light blue, a single absorbance spectrum of dilute blue food coloring; this sample has a $S/N$ ratio close to the average for the 64 spectra in the data set. This spectrum is surrounded by eight spectra, in dark blue, obtained by averaging together $n$ spectra, where $n$ is set by the slider. Each set of $n$ spectra is selected at random from the set of 64 spectra. Use the slider to explore the effect of $n$ on the signal-to-noise ratio, comparing your experimental results to your expectations. To maintain a constant $y$-axis scale, each spectrum is divided by $n$ before determining $S_\text{analyte}$, and $s_\text{noise}$.
+**Exercise 3**. The figure on the right shows, in the center and in light blue, a single absorbance spectrum of dilute blue dye; this sample has a $S/N$ ratio close to the average for the 64 spectra in the data set. This spectrum is surrounded by eight spectra, in dark blue, each obtained by averaging together $n$ spectra, where $n$ is set by the slider. Each set of $n$ spectra is selected at random from the set of 64 spectra. Use the slider to explore the effect of $n$ on the signal-to-noise ratio, comparing your experimental results to your expectations. To maintain a constant $y$-axis scale, each spectrum is divided by $n$ before determining $S_\text{analyte}$, and $s_\text{noise}$.
 
-**Question 4**. The equation for the signal-to-noise ratio assumes noise increases as the square root of *n*, which is true only if its mean and standard deviation are independent of time and of the signal's magnitude; when either is not true, then the improvement in the signal-to-noise ratio falls short of its expected value. What does this tell you about this set of 64 spectra?
+**Exercise 4**. The equation for the signal-to-noise ratio assumes noise increases as the square root of *n*, which is true only if its mean and its standard deviation are independent of time and independent of the signal's magnitude; if either is not true, then the improvement in the signal-to-noise ratio falls short of its expected value. What does this tell you about this set of 64 spectra?
