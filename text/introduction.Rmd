@@ -2,36 +2,16 @@
 output: html_fragment
 ---
 
-<!-- The following script makes it possible to use the mhchem -->
-<!-- latex package in a .Rmd file and to knit it into an .html file -->
-<!-- the font size is scaled to 90% to match text -->
-
-<!-- ```{=html} -->
-<!-- <script type="text/x-mathjax-config"> -->
-<!-- MathJax.Hub.Config({ -->
-<!--   TeX: { -->
-<!--     extensions: ["[Contrib]/mhchem/mhchem.js"] -->
-<!-- } -->
-<!-- }); -->
-<!-- MathJax.Hub.Config({  -->
-<!--         "HTML-CSS": { scale: 90 },  -->
-<!--         SVG: { linebreaks: { automatic:true } },  -->
-<!--  }); -->
-<!-- </script> -->
-<!-- ``` -->
-
-<!-- text for introduction -->
-
-The figure to the right shows replicate visible spectra for a very dilute solution of a blue dye. Each spectrum has the same *x*-axis scale and *y*-axis scale, which are included with the spectrum in the lower right and the upper left corners, respectively. Eight individual spectra are arranged on the outside (in light blue); the central figure (in dark blue) overlays all 64 spectra. Each spectrum in this data set has two parts: a determinate, or systematic contribution from the blue dye and an indeterminate, or random contribution from uncertainty in the measurement process. The first is the signal and the second is the noise.
+$\require{mhchem}$The figure on the right shows replicate visible spectra for a dilute solution of blue dye. Each spectrum has the same *x*-axis and *y*-axis scales, which are displayed in the lower right and the upper left corners. Eight individual spectra are arranged on the outside (in light blue); the central figure (in dark blue) overlays all 64 spectra. Each spectrum has two parts: a determinate, or systematic contribution from the blue dye and an indeterminate, or random contribution from uncertainty in the measurement process. The first is the signal and the second is the noise.
 
 #### Examining the Signal
 
-The eight individual spectra are nearly identical. Each spectrum has a prominent absorbance peak that is roughly symmetric in shape with a possible shoulder at shorter wavelengths, and each spectrum has a similar peak height and peak width. The similarity in these features suggests that a spectrum contains useful information about the blue dye in the form of the position, shape, height, and width of its peak. Any additional spectra should share these features. This is what it means to say that a spectrum includes a systematic signal.
+Each individual spectrum has a prominent absorbance peak that is roughly symmetric in shape and has a similar position, height, and width. The similarity in these features suggests that a spectrum contains useful information about the blue dye in the form of the position, shape, height, and width of its peak. Any additional spectra should share these features. This is what it means to say that a spectrum includes a systematic signal.
 
 #### Examining the Noise
 
-The eight individual spectra also share a background absorbance on either side of the peak that fluctuates in value. These fluctuations are random and do not share an underlying systematic pattern that carries information about the blue dye; the fluctuations do, however, carry information about the spectrometer used to record these spectra. Any additional spectra of the blue dye should share these features. This is what it means to say that a spectrum contains noise.  
+The individual spectra also shares a background absorbance on either side of the peak that fluctuates in value. These fluctuations are random and do not share a systematic pattern that carries information about the blue dye; the fluctuations do, however, carry information about the spectrometer used to record these spectra. Any additional spectra of the blue dye should share these features. This is what it means to say that a spectrum contains noise.  
 
 #### Examining the Signal and the Noise
 
-The central image---which is an overlay of all 64 spectra---gives additional insight to the difference between the signal and the noise. The peak in the overlaid spectra retains the shape, position, and height of the individual spectra; the noise, however, is both greater in magnitude and smoother in appearance.
+The central image---which is an overlay of all 64 spectra---gives additional insight to the difference between the signal and the noise. The peak in the overlaid spectra retains the shape, position, and height of the individual spectra; the variation in the noise, however, is evident in the thickness of the trace.

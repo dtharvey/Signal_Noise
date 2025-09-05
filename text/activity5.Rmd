@@ -2,36 +2,14 @@
 output: html_fragment
 ---
 
-<!-- The following script makes it possible to use the mhchem -->
-<!-- latex package in a .Rmd file and to knit it into an .html file -->
-<!-- the font size is scaled to 90% to match text -->
-
-<!-- ```{=html} -->
-<!-- <script type="text/x-mathjax-config"> -->
-<!-- MathJax.Hub.Config({ -->
-<!--   TeX: { -->
-<!--     extensions: ["[Contrib]/mhchem/mhchem.js"] -->
-<!-- } -->
-<!-- }); -->
-<!-- MathJax.Hub.Config({  -->
-<!--         "HTML-CSS": { scale: 90 },  -->
-<!--         SVG: { linebreaks: { automatic:true } },  -->
-<!--  }); -->
-<!-- </script> -->
-<!-- ``` -->
-
 <!-- text for activity 5 -->
 
-The Fourier transform (FT) is a mathematical operation that takes a signal in one measurement domain and converts it into a complimentary signal in another measurement domain. Although the mathematics behind a Fourier transform are complex, it is easy to appreciate why such a transformation is possible. Consider a sine wave with an amplitude of $A$ and a frequency of $f$. A plot of amplitude vs time shows an oscillating sine wave in the time domain. A plot of amplitude vs frequency, however, shows the sine wave in the frequency domain as a single line with an amplitude of $A$ at a frequency of $f$. Both domains are defined by the sine wave's amplitude and frequency.
+The Fourier transform (FT) is a mathematical operation that takes a signal in one measurement domain and converts it into a complimentary signal in another measurement domain. Although the mathematics behind a FT are complex, it is easy to appreciate why this transformation is possible. Consider a single sine wave with an amplitude of $A$ and a frequency of $f$. A plot of $A$ vs $t$ shows the sine wave in the time domain. A plot of $A$ vs $f$ gives the frequency domain as a single vertical line with an amplitude of $A$ at a frequency of $f$.
 
 #### Fourier Filtering
 
-The figure on the upper right is the frequency domain spectrum of a blue dye. The spectrum has 512 points with the signal measured at 630 nm and the noise measured from 725 nm to 750 nm. A Fourier transform of this data gives the time domain spectrum on the bottom right, which also has 512 points. In the time domain spectrum, information about the signal is carried mostly by the points at the far left and the far right, and information about the noise is carried mostly by the points in the center. In Fourier filtering we assign an amplitude of zero to those points in the time domain that primarily represent noise and use an inverse Fourier transform to return to the frequency domain.
+The figure on the upper right is the frequency domain spectrum of a blue dye. The spectrum has 512 points with the signal measured at 630 nm and the noise measured from 725 nm to 750 nm. A Fourier transform gives the time domain spectrum on the bottom right, which also has 512 points. In the time domain spectrum, information about the signal is carried mostly by the points at the far left and the far right, and information about the noise is carried mostly by the points in the center. In Fourier filtering we assign an amplitude of zero to those points in the time domain that primarily represent noise and use an inverse Fourier transform to return to the frequency domain.
 
-**Exercise 1** The figure on the upper right is described as a frequency domain spectrum. The *x*-axis, however, is defined using wavelengths instead of frequencies. Why is this okay?
+**Exercise 1** The right-most slider sets the number of points to retain in the time domain spectrum and, therefore, the number of points to filter out. Adjust the slider to retain 256 points. Which points are retained and which points are filtered out? Did this filtering improve the signal-to-noise ratio?
 
-**Exercise 2.** The right-most slider sets the number of points to retain in the time domain spectrum and, therefore, the number of points to filter out. Adjust the slider to retain 256 points. Which points are retained and which points are filtered out? Did this filtering improve the signal-to-noise ratio?
-
-**Exercise 3.** Repeat Exercise 1, using the slider to retain, 128, 64, 32, 16, 8, 4, and 2 points. What happens to the signal-to-noise ratio as you successively cut in half the number of points to retain. How many points do you need to retain to maximize the signal-to-noise ratio? If your goal is to determine the wavelength with the maximum absorbance, what is the smallest number of points you need to retain?
-
-**Exercise 4.** Repeat Exercise 3 using at least five additional spectra and comment on your results.
+**Exercise 2.** Repeat Exercise 1, using the slider to retain 128, 64, 32, 16, 8, 4, and 2 points. What happens to the signal-to-noise ratio as you successively cut in half the number of points to retain. How many points do you need to retain to maximize the signal-to-noise ratio? If your goal is to determine the wavelength with the maximum absorbance, what is the smallest number of points you need to retain?

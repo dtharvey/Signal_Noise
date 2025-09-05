@@ -1,61 +1,38 @@
 
 
 
-<!-- The following script makes it possible to use the mhchem -->
-<!-- latex package in a .Rmd file and to knit it into an .html file -->
-<!-- the font size is scaled to 90% to match text -->
-<!-- ```{=html} -->
-<!-- <script type="text/x-mathjax-config"> -->
-<!-- MathJax.Hub.Config({ -->
-<!--   TeX: { -->
-<!--     extensions: ["[Contrib]/mhchem/mhchem.js"] -->
-<!-- } -->
-<!-- }); -->
-<!-- MathJax.Hub.Config({  -->
-<!--         "HTML-CSS": { scale: 90 },  -->
-<!--         SVG: { linebreaks: { automatic:true } },  -->
-<!--  }); -->
-<!-- </script> -->
-<!-- ``` -->
-<!-- text for activity 1 -->
 <div id="how-do-we-measure-the-analytes-signal-and-the-noise" class="section level4">
 <h4>How Do We Measure the Analyte’s Signal and the Noise?</h4>
-<p>The figure on the right is an absorbance spectrum for a blue dye,
-which is our analyte. There is a peak between 500 nm and 700 nm, which
-is the analyte’s signal. Superimposed on the analyte’s signal is noise
-from the process of measuring absorbance.</p>
-<p><strong>Exercise 1</strong>. To measure the analyte’s signal, <span class="math inline">\(S_\text{analyte}\)</span>, we choose a wavelength
-and record the absorbance. The vertical magenta line labeled signal is
-the wavelength used to report the analyte’s signal, which appears on the
-right-side of the figure. Use the middle slider to find the wavelength
-where the analyte’s signal has its maximum value. Leaving the wavelength
-unchanged, examine the variability of the analyte’s signal for at least
-five additional spectra and comment on your results.</p>
-<p><strong>Exercise 2</strong>. To measure the noise we calculate the
-signal’s standard deviation, <span class="math inline">\(s_\text{noise}\)</span>, using a range of
-wavelengths where the analyte’s contribution is negligible. The
-horizontal green line shows the range of wavelengths used to report the
-noise, which appears on the right-side of the figure. Use the left-most
-slider to pick a spectrum and set the wavelength to the value used in
-the previous exercise. Use the right-most slider to explore how <span class="math inline">\(s_\text{noise}\)</span> is affected by the
+<p>The figure on the right shows one absorbance spectrum for a blue dye
+(the analyte). There is a peak near 630 nm, which is the analyte’s
+signal; superimposed on this is noise from the process of measuring
+absorbance.</p>
+<p><strong>Exercise 1</strong>. To measure the analyte’s signal, <span class="math inline">\(S_\text{analyte}\)</span>, choose a wavelength
+using the signal slider and record the absorbance. Adjust the wavelength
+to find the signal’s maximum value. Leave the wavelength unchanged and
+examine the variability of the analyte’s signal by examining at least
+five additional spectra. Comment on your results.</p>
+<p><strong>Exercise 2</strong>. To measure the noise we report the
+signal’s standard deviation, <span class="math inline">\(s_\text{noise}\)</span>, over a range of
+wavelengths where the analyte’s contribution is negligible. Use the
+right-most slider to explore how <span class="math inline">\(s_\text{noise}\)</span> is affected by the
 location and width of the wavelength range. What is the best range of
 wavelengths for measuring the noise? Leaving the wavelength range
 unchanged, examine the variability of the noise for at least five of the
-other 64 spectra and comment on your results.</p>
+other 64 spectra. Comment on your results.</p>
 </div>
 <div id="how-do-we-report-the-signal-and-the-noise" class="section level4">
 <h4>How Do We Report the Signal and the Noise?</h4>
-<p>The signal is always of interest to us as it provides information
-about the analyte’s concentration. The absolute amount of noise is of
-less interest to us; however the amount of noise relative to the signal,
-the signal-to-noise ratio, <span class="math inline">\(S/N\)</span>, is
-important as it is a measurement of the signal’s uncertainty.</p>
+<p>The signal is always of interest as it provides information about the
+analyte’s concentration. The absolute amount of noise is of less
+interest to us, but the amount of noise relative to the signal, the
+signal-to-noise ratio, <span class="math inline">\(S/N\)</span>, is
+important as it provides a measurement of the signal’s uncertainty.</p>
 <p><span class="math display">\[S/N = S_\text{analyte} /
 s_\text{noise}\]</span></p>
-<p><strong>Exercise 3</strong>. Use the slider to examine some of the 64
-individual absorbance spectra in this data set. Pay attention to
-variations in the signal-to-noise ratios between spectra, all of which
-were obtained at the same time and under the same conditions. How much
-variation is there in the individual signal-to-noise ratios? Comment on
-your results.</p>
+<p><strong>Exercise 3</strong>. Examine at least 10 of the individual
+absorbance spectra. Pay attention to variations in the signal-to-noise
+ratios between these spectra, all of which were obtained at the same
+time and under the same conditions. How much variation is there in the
+individual signal-to-noise ratios? Comment on your results.</p>
 </div>

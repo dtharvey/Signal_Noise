@@ -1,56 +1,37 @@
 
 
 
-<!-- The following script makes it possible to use the mhchem -->
-<!-- latex package in a .Rmd file and to knit it into an .html file -->
-<!-- the font size is scaled to 90% to match text -->
-<!-- ```{=html} -->
-<!-- <script type="text/x-mathjax-config"> -->
-<!-- MathJax.Hub.Config({ -->
-<!--   TeX: { -->
-<!--     extensions: ["[Contrib]/mhchem/mhchem.js"] -->
-<!-- } -->
-<!-- }); -->
-<!-- MathJax.Hub.Config({  -->
-<!--         "HTML-CSS": { scale: 90 },  -->
-<!--         SVG: { linebreaks: { automatic:true } },  -->
-<!--  }); -->
-<!-- </script> -->
-<!-- ``` -->
 <!-- text for activity 3 -->
-<p>When the signal-to-noise ratio is insufficient for our purpose, there
-are two broad strategies we can use to improve its value: hardware
-solutions and software solutions. Hardware solutions are built into the
-instrument and are not of interest here. With a software, or
-computational solution, we process the data using a mathematical
-algorithm as it is collected or after data collection is complete.</p>
+<p>When the signal-to-noise ratio is too small there are two broad
+strategies we can use to increase its value: hardware solutions and
+software solutions. Hardware solutions are built into the instrument and
+are not of interest here. With a software solution, we process the data
+using a mathematical algorithm as it is collected or after data
+collection is complete.</p>
 <div id="signal-averaging" class="section level4">
 <h4>Signal Averaging</h4>
-<p>The simplest computational approach is to average a set of <span class="math inline">\(n\)</span> individual spectra Because the
-analyte’s signal is nominally the same for each spectrum, the signal
+<p>The simplest software approach is to average a set of <span class="math inline">\(n\)</span> individual spectra. Because the
+analyte’s signal is nominally the same for each spectrum, its value
 increases linearly with <span class="math inline">\(n\)</span>; noise,
 however, is random and increases as the square root of <span class="math inline">\(n\)</span>; thus <span class="math display">\[\left( S_\text{analyte} \right)_n = n \times
 S_\text{analyte} \quad \quad \quad \left( s_\text{noise} \right)_n =
 \sqrt{n} \times s_\text{noise}\]</span> <strong>Exercise 1</strong>.
-Given these two equations, derive an equation that expresses the
+Given these equations, derive an equation that expresses the
 signal-to-noise ratio after <span class="math inline">\(n\)</span>
 scans, <span class="math inline">\((S/N)_n\)</span>, as a function of
-the signal-to-noise ratio for one scan, <span class="math inline">\((S/N)_1\)</span>, and the number of scans, <span class="math inline">\(n\)</span>. What does a plot of <span class="math inline">\((S/N)_n\)</span> as a function of <span class="math inline">\(n\)</span> look like?</p>
-<p><strong>Exercise 2</strong>. Suppose a single scan has a
-signal-to-noise ratio of 1.0. What is the signal-to-noise ratio if <span class="math inline">\(n = 4\)</span>? How many spectra do you need to
-average together to achieve a signal-to-noise ratio of 4.0?</p>
-<p><strong>Exercise 3</strong>. The figure on the right shows, in the
-center and in light blue, a single absorbance spectrum of dilute blue
-dye; this sample has a <span class="math inline">\(S/N\)</span> ratio
-close to the average for the 64 spectra in the data set. This spectrum
-is surrounded by eight spectra, in dark blue, each obtained by averaging
-together <span class="math inline">\(n\)</span> spectra, where <span class="math inline">\(n\)</span> is set by the slider. Each set of <span class="math inline">\(n\)</span> spectra is selected at random from the
-set of 64 spectra. Use the slider to explore the effect of <span class="math inline">\(n\)</span> on the signal-to-noise ratio, comparing
-your experimental results to your expectations. To maintain a constant
-<span class="math inline">\(y\)</span>-axis scale, each spectrum is
-divided by <span class="math inline">\(n\)</span> before determining
-<span class="math inline">\(S_\text{analyte}\)</span>, and <span class="math inline">\(s_\text{noise}\)</span>.</p>
-<p><strong>Exercise 4</strong>. The equation for the signal-to-noise
+the signal-to-noise ratio for one scan, <span class="math inline">\((S/N)_1\)</span>, and the number of scans, <span class="math inline">\(n\)</span>. What does a plot of <span class="math inline">\((S/N)_n\)</span> as a function of <span class="math inline">\(n\)</span> look like? Suppose a single scan has a
+signal-to-noise ratio of 1.0. What is the signal-to-noise ratio if <span class="math inline">\(n = 4\)</span>? What value of <span class="math inline">\(n\)</span> will yield a signal-to-noise ratio of
+4.0?</p>
+<p><strong>Exercise 2</strong>. The figure on the right shows, in the
+center, a single absorbance spectrum of dilute blue dye. Surrounding
+this spectrum are eight spectra obtained by averaging together <span class="math inline">\(n\)</span> spectra, where <span class="math inline">\(n\)</span> is set by the slider. Explore the
+effect of <span class="math inline">\(n\)</span> on the signal-to-noise
+ratio, comparing your results to your expectations. To maintain a
+constant <span class="math inline">\(y\)</span>-axis scale, each
+spectrum is divided by <span class="math inline">\(n\)</span> before
+determining <span class="math inline">\(S_\text{analyte}\)</span>, and
+<span class="math inline">\(s_\text{noise}\)</span>.</p>
+<p><strong>Exercise 3</strong>. The equation for the signal-to-noise
 ratio assumes noise increases as the square root of <em>n</em>, which is
 true only if its mean and its standard deviation are independent of time
 and independent of the signal’s magnitude; if either is not true, then

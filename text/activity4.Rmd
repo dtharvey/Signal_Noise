@@ -2,40 +2,18 @@
 output: html_fragment
 ---
 
-<!-- The following script makes it possible to use the mhchem -->
-<!-- latex package in a .Rmd file and to knit it into an .html file -->
-<!-- the font size is scaled to 90% to match text -->
-
-<!-- ```{=html} -->
-<!-- <script type="text/x-mathjax-config"> -->
-<!-- MathJax.Hub.Config({ -->
-<!--   TeX: { -->
-<!--     extensions: ["[Contrib]/mhchem/mhchem.js"] -->
-<!-- } -->
-<!-- }); -->
-<!-- MathJax.Hub.Config({  -->
-<!--         "HTML-CSS": { scale: 90 },  -->
-<!--         SVG: { linebreaks: { automatic:true } },  -->
-<!--  }); -->
-<!-- </script> -->
-<!-- ``` -->
-
 <!-- text for activity 4 -->
 
-Signal averaging works well when the time to record a single spectrum is short and when the sample and the instrument are stable with respect to time. If either condition fails, we can take advantage of the fact that noise changes quickly while the signal changes more slowly, and smooth the noise by averaging it across several adjacent points.
+#### Moving Average and Savitzky-Golay Smoothing Filters
 
-#### Moving Average Smoothing Filter
+Signal averaging is effective when the time to record a single spectrum is short and when the sample and the instrument are stable with respect to time. If either condition fails we can smooth the noise by applying a smoothing filter, two of which are covered here. In a moving average filter, we average an odd number of consecutive points---this is the filter's length---and replace the middle point with this average, repeating this algorithm from the spectrum's beginning to its end. A moving average filter treats all points equally. With a Savitzky-Golay filter we assign more weight to points near the filter's middle and less weight to points at the edges.
 
-In a moving average filter we add together an odd number of consecutive points from a spectrum (the filter's length), average their values, and replace the filter's middle point with this average. Use the controls on the right to explore how the length of a moving average filter affects the signal-to-noise ratio by experimenting with several of the available 64 spectra of blue dye. The signal is measured at 630 nm and the noise is measured between 725 nm and 775 nm. The magenta trace is the original data and the dark blue trace is the data after smoothing.
+**Exercise 1**. Explain why averaging five consecutive points from a noisy spectrum will reduce the noise more than the signal. 
 
-**Exercise 1**. Think about what it means to take an average and explain why averaging five consecutive points from a noisy spectrum will reduce the noise more than the signal. Why does the filter use an odd number of data points?
+**Exercise 2**. Why do both filters require an odd number of data points?
 
-**Exercise 2**. As you increase the width of the moving average filter you should notice that the smoothed spectrum has lost points at both smaller and large wavelengths. Explain why this distortion of the original spectrum is expected.
+**Exercise 3**. Use the controls on the right to explore how the length of a moving average filter affects the signal-to-noise ratio. The signal is measured at 630 nm and the noise is measured between 725 nm and 775 nm. The magenta trace is the original data and the dark blue trace is the data after smoothing. Repeat using the Savitzky-Golay filter. Compare equally-sized moving average filters and Savitzky-Golay filters and comment on your results.
 
-#### Savitzky-Golay Smoothing Filter
+**Exercise 4**. As you increase the width of the moving average filter you should notice that the smoothed spectrum has lost points at both ends. Explain why this distortion of the original spectrum is expected.
 
-A moving average filter treats all points equally. With a Savitzky-Golay filter, we assign more weight to points near the middle of the filter than we do to points at the filter's edges. The signal is measured at 630 nm and the noise is measured between 725 nm and 775 nm. The magenta trace is the original data and the dark blue trace is the data after smoothing.
-
-**Exercise 3**. Use the controls on the right to explore how the length of a Savitzky-Golay filter affects the signal-to-noise ratio by experimenting with several of the available 64 spectra of blue dye.
-
-**Exercise 4**. Compare equally-sized moving average filters and Savitzky-Golay filters to each other. What advantages are apparent with a moving average filter? What advantages are apparent with a Savitzky-Golay filter?
+**Exercise 5**. For both the moving average filter and the Savitzky-Golay filter, set the filter's length to 25. How does the smoothed data differ when using these two filters? 

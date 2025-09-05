@@ -1,37 +1,21 @@
 
 
 
-<!-- The following script makes it possible to use the mhchem -->
-<!-- latex package in a .Rmd file and to knit it into an .html file -->
-<!-- the font size is scaled to 90% to match text -->
-<!-- ```{=html} -->
-<!-- <script type="text/x-mathjax-config"> -->
-<!-- MathJax.Hub.Config({ -->
-<!--   TeX: { -->
-<!--     extensions: ["[Contrib]/mhchem/mhchem.js"] -->
-<!-- } -->
-<!-- }); -->
-<!-- MathJax.Hub.Config({  -->
-<!--         "HTML-CSS": { scale: 90 },  -->
-<!--         SVG: { linebreaks: { automatic:true } },  -->
-<!--  }); -->
-<!-- </script> -->
-<!-- ``` -->
 <!-- text for wrapping up -->
-<div id="details-on-the-data-set-used-in-this-module" class="section level4">
-<h4>Details on the Data Set Used in this Module</h4>
-<p>The spectra in all activities, except for Activity 2, use a
-commercial blue food coloring that contains the FD&amp;C dyes Blue 1 and
-Red 40. To allow for small signal-to-noise ratios, a portion of the
-stock solution was diluted until the absorbance was between 0.02 and
-0.03 au. Spectra were recorded using a Vernier SpectroVis Plus
+<div id="details-on-the-data-set-used-in-this-learning-module" class="section level4">
+<h4>Details on the Data Set Used in this Learning Module</h4>
+<p>The spectra in all exercises in this learning module, except for
+those on the “Evaluating the Signal-to-Noise Ratio tab, use a commercial
+blue food coloring that contains the FD&amp;C dyes Blue 1 and Red 40. To
+allow for small signal-to-noise ratios, a portion of the stock solution
+was diluted until its absorbance was between 0.02 and 0.03 absorbance
+units. Spectra were recorded using a Vernier SpectroVis Plus
 spectrometer and LoggerPro software. A full spectrum was recorded from
-450 nm to 899.8 nm for each of 70+ consecutive scans, which were stored
-and exported as a single .csv file. This file was then trimmed to the
-first 64 spectra for use in this module. You can use the download button
-to retrieve the spectra as a .csv file; the individual spectra are
-organized in columns of absorbance values at 560 wavelengths, whose
-values are in the first column.</p>
+450 nm to 899.8 nm for each of 70+ consecutive scans and exported as a
+single .csv file. This file was then trimmed to the first 64 spectra.
+You can use the download button to retrieve the spectra as a .csv file;
+the individual spectra are organized in columns of absorbance values at
+560 wavelengths, whose values are in the first column.</p>
 </div>
 <div id="preparing-the-data-for-fourier-filtering" class="section level4">
 <h4>Preparing the Data for Fourier Filtering</h4>
@@ -42,15 +26,17 @@ power of 2. As <span class="math inline">\(2^{9} = 512\)</span> and
 activity use only the first 512 wavelengths, spanning a wavelength range
 of 450 nm to 857.6 nm.</p>
 </div>
-<div id="why-did-we-use-synthetic-data-in-activity-2" class="section level4">
-<h4>Why Did We Use Synthetic Data in Activity 2?</h4>
+<div id="why-is-synthetic-data-used-for-the-evaluating-the-signal-to-noise-tab" class="section level4">
+<h4>Why Is Synthetic Data Used for the “Evaluating the Signal-to-Noise
+Tab”?</h4>
 <p>One limitation to working with real spectra is that we cannot
 separate the signal from the noise so that we can examine them
 separately, Synthetic data allows us to do this by separately creating
 the signal and the noise, and then adding them together to create a
 noisy signal. The figure on the upper right shows the original spectrum
-from Activity 2 as the pure signal (bottom), the pure noise (middle),
-and the resulting noisy signal (top).</p>
+from the “Evaluating the Signal-to-Noise” tab as the pure signal
+(bottom), the pure noise (middle), and the resulting noisy signal
+(top).</p>
 </div>
 <div id="can-we-use-a-smoothing-filter-several-times-on-the-same-data" class="section level4">
 <h4>Can We Use a Smoothing Filter Several Times on the Same Data?</h4>
@@ -72,33 +58,23 @@ of the <a href="https://libretexts.org/">LibreText</a> project.</p>
 Golay, “Smoothing and Differentiation of Data by Simplified Least
 Squares Procedures,” <em>Analytical Chemistry</em>, <em>36</em>,
 1627–1639</a>.</p>
-<p>The following series of papers provide a good introduction to the
-Fourier transform:</p>
+<p>The following papers provide a good introduction to the Fourier
+transform and its application in spectroscopy. The last of these papers
+describes a Python-based interactive learning module.</p>
 <ul>
-<li>Glasser, L. <a href="https://doi.org/10.1021/ed064pA228">“Fourier
+<li>Leslie Glasser <a href="https://doi.org/10.1021/ed064pA228">“Fourier
 Transforms for Chemists: Part I. Introduction to the Fourier
-Transform</a>,” J. Chem. Educ. 1987, 64, A228–A233</li>
-<li>Glasser, L. <a href="https://doi.org/10.1021/ed064pA260">“Fourier
-Transforms for Chemists: Part II. Fourier Transforms in Chemistry and
-Spectroscopy</a>,” J. Chem. Educ. 1987, 64, A260–A266</li>
-<li>Glasser, L. <a href="https://doi.org/10.1021/ed064pA306">“Fourier
-Transforms for Chemists: Part III. Fourier Transforms in Data
-Treatment</a>,” J. Chem. Educ. 1987, 64, A306–A313.</li>
-</ul>
-<p>The following three texts provide additional insight into the Fourier
-transform and some of the mathematical details; the first of the three
-texts is the most basic and the last of the three texts is more
-advanced:</p>
-<ul>
-<li>Kenneth R. Beebe, Randy J. Pell, Mary Beth Seaholtz <a href="https://www.wiley.com/en-us/Chemometrics%3A+A+Practical+Guide-p-9780471124511"><em>Chemometrics:
-A Practical Guide</em>, Wiley-Interscience, NY, 1998</a>.</li>
-<li>Richard G. Brereton <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/0470863242"><em>Chemometrics:
-Data Analysis for the Laboratory and Chemical Plant</em>, Wiley,
-Chichester, UK 2003.</a></li>
-<li>B.G.M. Vandegubste, D. L. Massart, L.M.C. Buydens, S. De Jong, P.J.
-Lewi, J. Smeyers-Verbeke Chapter 40 in <a href="https://shop.elsevier.com/books/handbook-of-chemometrics-and-qualimetrics/massart/978-0-444-82853-8">*Handbook
-of Chemometrics and Qualimetrics: Part B,, Elsevier, Amsterdam,
-1998.</a></li>
+Transform</a>,” J. Chem. Educ. 1987, 64, A228–A233.</li>
+<li>Leslie, Glasser <a href="https://doi.org/10.1021/ed064pA260">“Fourier Transforms for
+Chemists: Part II. Fourier Transforms in Chemistry and
+Spectroscopy</a>,” J. Chem. Educ. 1987, 64, A260–A266.</li>
+<li>Leslie Glasser. <a href="https://doi.org/10.1021/ed064pA306">“Fourier Transforms for
+Chemists: Part III. Fourier Transforms in Data Treatment</a>,” J. Chem.
+Educ. 1987, 64, A306–A313.</li>
+<li>A.J. Cominic III, Nicholas L. Cipolla, William C. Pfalzgraff,
+Jeffrey A. Jankowski, Rebecca J. Raph, and Andrés Montoya-Castillo <a href="https://doi.org/10.1021/acs.jchemed.4c01439">“A Pedagogical Tour
+of the Fourier Transform with Applications to NMR and IR
+Spectroscopy</a>, “J. Chem. Educ. 2025, 102, 1972-1980.</li>
 </ul>
 <p>You can further explore signal averaging, smoothing filters, and
 Fourier filtering using the javascript applet available <a href="http://195.134.76.37/applets/AppletSmooth/Appl_Smooth2.html">here</a>,
